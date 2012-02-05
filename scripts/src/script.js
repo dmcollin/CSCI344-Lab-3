@@ -26,13 +26,18 @@ var dateParse = created_date.split(' ');
 var day = dateParse[0];
 var time = dateParse[4];
 
-//$("#tweets").append("<p>"+profile_image+"&nbsp;"+user_name+"&nbsp;"+created_date+"&nbsp"+time+"</p>"+"<p>"+tweet.text+"</p>"); //add to the dom using jquery
-
-var tweet = tweet.text;
+//4. Make the tweets slide down (store temporarily in a jquery object, then apply slidedown)
+var tweetReceived = $("<p>"+profile_image+"&nbsp;"+user_name+"&nbsp;"+day+"&nbsp"+time+"</p>"+"<p>"+tweet.text+"</p>");
+tweetReceived.hide().slideDown();
 
  //3. Make the tweets occur so the most recent are at the top (check jquery documentation)
+$("#tweets").prepend(tweetReceived);
 
-$("#tweets").prepend("<p>"+profile_image+"&nbsp;"+user_name+"&nbsp;"+day+"&nbsp"+time+"</p>"+"<p>"+tweet+"</p>");
+	
+/*tweetReceived.hide().fadeIn('5000', function() {
+  $("#tweets").prepend(tweetReceived);
+});*/
+
 
 });
 
@@ -44,7 +49,7 @@ s.start(); //start the spotter
 
 
    
-    //4. Make the tweets slide down (store temporarily in a jquery object, then apply slidedown)
+ 
     //5. Alternate the colors or the background of the tweets (create a variable that changes the css class of the tweet based on the order that it's coming in)
     //6. Show a maximum of 10 tweets at a time (remove old tweets from the dom) (easiest way is to use arrays to create a cycle)
 
